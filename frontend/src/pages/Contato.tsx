@@ -46,17 +46,17 @@ function Contato() {
   }
 
   return (
-    <main>
-      <div>
+    <main className="mx-auto max-w-2xl p-6">
+      <div className="mb-6 text-4xl font-bold text-blue-900">
         <h1>Lista de Contatos</h1>
       </div>
 
-      <div>
+      <div className="flex flex-col gap-3">
         {contatos.length === 0 ? (
-          <p>Nenhum contato encontrado.</p>
+          <p className="text-gray-500">Nenhum contato encontrado.</p>
         ) : (
           contatos.map((contato) => (
-            <div key={contato.id}>
+            <div key={contato.id} className="rounded border p-4 max-w-2xs flex-wrap">
               <h2 className="text-xl font-bold">{contato.name}</h2>
               <p className="text-gray-600">{contato.email}</p>
             </div>
