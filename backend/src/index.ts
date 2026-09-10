@@ -79,6 +79,24 @@ app.put("/api/contatos/:id", (req: Request, res: Response) => {
   return res.json(contatoAtualizado);
 });
 
+//DELETE: Requisição para deletar um contato existente
+app.delete("/api/contatos/:id", (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const index = contatos.findIndex((c) => c.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      erro: "Contato não encontrado",
+    });
+  }
+
+  contatos.splice(index,1);
+  
+  //Retorna (No Content) para indicar que a exclusão foi bem-sucedida, mas não há conteúdo para retornar
+  return res.status(204).send();
+
+});
+
 app.listen(port, () => {
   console.log(`Servidor iniciado em: http://localhost:${port}`);
 });
